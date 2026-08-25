@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos ご提案｜自社EC運用パートナーシップ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1C2541;
+    --slate:#3A506B;
+    --teal:#5BC0BE;
+    --amber:#FFC857;
+    --bg:#F4F6F8;
+    --ink:#1B1F27;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Noto Sans JP',sans-serif;
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.jp-head{
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-weight:900;
+    letter-spacing:0.02em;
+  }
+  .en-head{
+    font-family:'Space Grotesk',sans-serif;
+    letter-spacing:0.08em;
+  }
+  a{color:inherit;text-decoration:none;}
+  .container{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ===== Header ===== */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    background:rgba(28,37,65,0.92);
+    backdrop-filter:blur(6px);
+    padding:14px 0;
+  }
+  header .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .logo{
+    color:var(--white);
+    font-size:18px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--teal);
+    box-shadow:0 0 8px var(--teal);
+    animation:blink 1.6s infinite ease-in-out;
+  }
+  .header-cta{
+    background:var(--amber);
+    color:var(--navy);
+    padding:8px 18px;
+    border-radius:4px;
+    font-size:13px;
+    font-weight:700;
+    font-family:'Space Grotesk',sans-serif;
+  }
+
+  @keyframes blink{
+    0%,100%{opacity:1;}
+    50%{opacity:0.25;}
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    background:
+      radial-gradient(circle at 15% 20%, rgba(91,192,190,0.18), transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(255,200,87,0.12), transparent 40%),
+      linear-gradient(160deg,#151d33 0%, var(--navy) 55%, #223056 100%);
+    color:var(--white);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:120px 0 80px;
+    position:relative;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:48px 48px;
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.3fr 0.9fr;
+    gap:48px;
+    align-items:center;
+    width:100%;
+  }
+  .status-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(91,192,190,0.12);
+    border:1px solid rgba(91,192,190,0.4);
+    color:var(--teal);
+    font-size:12px;
+    padding:6px 14px;
+    border-radius:20px;
+    font-family:'Space Grotesk',sans-serif;
+    margin-bottom:24px;
+  }
+  .status-tag .lamp{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--teal);
+    animation:blink 1.6s infinite ease-in-out;
+  }
+  .hero h1{
+    font-size:clamp(28px,4.2vw,46px);
+    line-height:1.5;
+    margin-bottom:20px;
+  }
+  .hero h1 span{
+    color:var(--amber);
+  }
+  .hero p.lead{
+    font-size:15px;
+    color:#C9D2E3;
+    max-width:520px;
+    margin-bottom:32px;
+  }
+  .hero-note{
+    font-size:12.5px;
+    color:#8A99B8;
+    font-family:'Space Grotesk',sans-serif;
+  }
+  .cta-btn{
+    display:inline-block;
+    background:var(--amber);
+    color:var(--navy);
+    padding:14px 32px;
+    border-radius:4px;
+    font-weight:700;
+    font-size:14px;
+    box-shadow:0 8px 24px rgba(255,200,87,0.25);
+    transition:transform .2s ease;
+  }
+  .cta-btn:hover{transform:translateY(-2px);}
+
+  /* Dashboard visual */
+  .dashboard{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:8px;
+    padding:24px;
+    font-family:'Space Grotesk',sans-serif;
+  }
+  .dashboard-head{
+    display:flex;
+    justify-content:space-between;
+    font-size:11px;
+    color:#8A99B8;
+    margin-bottom:16px;
+    letter-spacing:0.1em;
+  }
+  .gauge-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    font-size:13px;
+    color:#DCE3EF;
+  }
+  .gauge-row:last-child{border-bottom:none;}
+  .bar-bg{
+    flex:1;
+    height:6px;
+    background:rgba(255,255,255,0.1);
+    border-radius:3px;
+    margin:0 12px;
+    overflow:hidden;
+  }
+  .bar-fill{
+    height:100%;
+    border-radius:3px;
+    background:linear-gradient(90deg,var(--teal),#8fe3e1);
+  }
+  .val{
+    font-size:12px;
+    color:var(--teal);
+    min-width:44px;
+    text-align:right;
+  }
+
+  /* ===== Section Common ===== */
+  section{
+    padding:90px 0;
+  }
+  .eyebrow{
+    font-family:'Space Grotesk',sans-serif;
+    color:var(--slate);
+    font-size:12px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:28px;height:2px;
+    background:var(--teal);
+  }
+  .sec-title{
+    font-size:clamp(22px,3vw,32px);
+    margin-bottom:20px;
+    color:var(--navy);
+  }
+
+  /* ===== Understanding ===== */
+  .understand{
+    background:var(--white);
+  }
+  .understand-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    margin-top:36px;
+  }
+  .quote-card{
+    background:var(--bg);
+    border-left:4px solid var(--teal);
+    padding:24px 28px;
+    border-radius:4px;
+    font-size:14.5px;
+    color:#33415A;
+  }
+  .quote-card strong{
+    display:block;
+    color:var(--navy);
+    font-size:15px;
+    margin-bottom:8px;
+    font-family:'Zen Kaku Gothic New',sans-serif;
+  }
+
+  /* ===== Value cards ===== */
+  .value-sec{
+    background:linear-gradient(180deg,#EEF2F5,var(--bg));
+  }
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    margin-top:40px;
+  }
+  .card{
+    background:var(--white);
+    border-radius:8px;
+    padding:30px 26px;
+    border:1px solid #E1E6EC;
+    position:relative;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 16px 32px rgba(28,37,65,0.08);
+  }
+  .card .num{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:13px;
+    color:var(--teal);
+    letter-spacing:0.1em;
+    margin-bottom:14px;
+  }
+  .card h3{
+    font-size:17px;
+    margin-bottom:12px;
+    color:var(--navy);
+  }
+  .card p{
+    font-size:13.8px;
+    color:#4A5468;
+  }
+
+  /* ===== Flow ===== */
+  .flow-sec{
+    background:var(--navy);
+    color:var(--white);
+  }
+  .flow-sec .sec-title{color:var(--white);}
+  .flow-sec .eyebrow{color:var(--teal);}
+  .flow-sec .eyebrow::before{background:var(--amber);}
+  .timeline{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    position:relative;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    top:22px;
+    left:5%;
+    right:5%;
+    height:2px;
+    background:repeating-linear-gradient(90deg,rgba(255,255,255,0.25) 0 8px, transparent 8px 16px);
+  }
+  .step{
+    position:relative;
+    padding-top:60px;
+  }
+  .step .circle{
+    position:absolute;
+    top:0;left:0;
+    width:44px;height:44px;
+    border-radius:50%;
+    background:var(--navy);
+    border:2px solid var(--teal);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    color:var(--teal);
+    z-index:2;
+  }
+  .step h4{
+    font-size:15px;
+    margin-bottom:8px;
+    color:var(--amber);
+    font-family:'Zen Kaku Gothic New',sans-serif;
+  }
+  .step p{
+    font-size:13px;
+    color:#C6CEE0;
+  }
+
+  .week-box{
+    margin-top:56px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:8px;
+    padding:28px;
+  }
+  .week-box h4{
+    font-size:13px;
+    color:var(--teal);
+    letter-spacing:0.1em;
+    font-family:'Space Grotesk',sans-serif;
+    margin-bottom:18px;
+  }
+  .week-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+  }
+  .day{
+    background:rgba(255,255,255,0.06);
+    border-radius:4px;
+    padding:14px 8px;
+    text-align:center;
+  }
+  .day span{
+    display:block;
+    font-size:11px;
+    color:#8A99B8;
+    margin-bottom:6px;
+    font-family:'Space Grotesk',sans-serif;
+  }
+  .day strong{
+    font-size:13px;
+    color:var(--white);
+  }
+
+  /* ===== Closing ===== */
+  .closing{
+    background:linear-gradient(135deg,#F4F6F8,#E9EEF3);
+    text-align:center;
+    padding:110px 0;
+  }
+  .closing h2{
+    font-size:clamp(24px,3.6vw,36px);
+    color:var(--navy);
+    margin-bottom:18px;
+  }
+  .closing p{
+    color:#4A5468;
+    max-width:560px;
+    margin:0 auto 36px;
+    font-size:14.5px;
+  }
+  .closing-panel{
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+  }
+  .info-list{
+    display:flex;
+    gap:26px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:10px;
+    font-size:13px;
+    color:var(--slate);
+  }
+  .info-list div{
+    background:var(--white);
+    border:1px solid #DCE2E8;
+    padding:8px 16px;
+    border-radius:20px;
+  }
+  .info-list b{color:var(--navy);}
+
+  footer{
+    background:var(--navy);
+    color:#8A99B8;
+    text-align:center;
+    padding:28px 0;
+    font-size:12px;
+    font-family:'Space Grotesk',sans-serif;
+  }
+
+  /* ===== Responsive ===== */
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .dashboard{margin-top:20px;}
+    .understand-box{grid-template-columns:1fr;}
+    .card-grid{grid-template-columns:1fr 1fr;}
+    .timeline{grid-template-columns:1fr 1fr;}
+    .timeline::before{display:none;}
+    .week-grid{grid-template-columns:repeat(5,1fr);}
+  }
+  @media(max-width:560px){
+    .card-grid{grid-template-columns:1fr;}
+    .timeline{grid-template-columns:1fr;}
+    .week-grid{grid-template-columns:repeat(3,1fr);}
+    .info-list{flex-direction:column;}
+    section{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo en-head"><span class="dot"></span>KAIROS</div>
+    <a href="#closing" class="header-cta">面談を申し込む</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="status-tag"><span class="lamp"></span>OPERATION STATUS：ONGOING</div>
+      <h1>
+        止めないECは、<br>
+        <span>誰かが淡々と守っている。</span><br>
+        私たちが、その担当になります。
+      </h1>
+      <p class="lead">
+        EC Force / Shopify の日々の設定・修正・URL発行――
+        派手さはなくても、止まれば売上に直結する業務です。
+        Kairosは、この“地味だが止められない”運用を、
+        長期で伴走するチームとしてご提案します。
+      </p>
+      <a href="#closing" class="cta-btn">Kairosに相談する</a>
+      <p class="hero-note" style="margin-top:16px;">Proposal for j.20xx ／ Web制作・システム開発チーム Kairos</p>
+    </div>
+
+    <div class="dashboard">
+      <div class="dashboard-head">
+        <span>MONTHLY OPERATION</span>
+        <span>j.20xx</span>
+      </div>
+      <div class="gauge-row">
+        <span>EC Force 対応</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:88%;"></div></div>
+        <span class="val">88%</span>
+      </div>
+      <div class="gauge-row">
+        <span>Shopify 設定</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:82%;"></div></div>
+        <span class="val">82%</span>
+      </div>
+      <div class="gauge-row">
+        <span>LP軽微修正</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:70%;"></div></div>
+        <span class="val">70%</span>
+      </div>
+      <div class="gauge-row">
+        <span>稼働安定度</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:96%;"></div></div>
+        <span class="val">96%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="understand">
+  <div class="container">
+    <div class="eyebrow en-head">UNDERSTANDING</div>
+    <h2 class="sec-title">これは「作る仕事」ではなく、<br>「止めない仕事」だと理解しています。</h2>
+    <div class="understand-box">
+      <div class="quote-card">
+        <strong>0→1の構築ではない</strong>
+        既存のEC Force / Shopify環境に対する設定変更・修正・URL発行が中心。
+        求められているのは新規制作力ではなく、既存環境を壊さずに素早く正確に触れる技術と慎重さです。
+      </div>
+      <div class="quote-card">
+        <strong>スポット対応でも、体制は「継続前提」</strong>
+        月額固定・平日5時間程度という枠組みは、単発の外注ではなく
+        「いつ聞いても状況を把握している人」を必要としているということ。
+        属人化リスクを避けるため、チームで対応できる体制が有効です。
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="value-sec">
+  <div class="container">
+    <div class="eyebrow en-head">WHAT KAIROS OFFERS</div>
+    <h2 class="sec-title">Kairosがご提供できる価値</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="num en-head">01</div>
+        <h3>EC Force / Shopify の実務対応力</h3>
+        <p>両プラットフォームでの設定・修正・URL発行・EFO関連の実務経験を持つメンバーが対応。管理画面特有の制約を理解した上での確実な作業を行います。</p>
+      </div>
+      <div class="card">
+        <div class="num en-head">02</div>
+        <h3>個人でなく「チーム」で止めない</h3>
+        <p>担当者一人の在宅稼働に依存しない、Kairosチームでのバックアップ体制。急な緊急対応や引き継ぎリスクを最小化します。</p>
+      </div>
+      <div class="card">
+        <div class="num en-head">03</div>
+        <h3>LP軽微修正からLPO提案へ</h3>
+        <p>単なる修正対応にとどまらず、既存LPの構成・導線を見た上でのLPO改善提案を継続的にご提示。守るだけでなく、伸ばす視点を持ちます。</p>
+      </div>
+      <div class="card">
+        <div class="num en-head">04</div>
+        <h3>日本語での円滑な業務連絡</h3>
+        <p>依頼内容の確認・仕様のすり合わせ・進捗報告を、齟齬のない日本語コミュニケーションで実施。オンライン面談・チャットどちらにも柔軟に対応します。</p>
+      </div>
+      <div class="card">
+        <div class="num en-head">05</div>
+        <h3>平日安定稼働・柔軟な緊急対応</h3>
+        <p>平日5時間程度の稼働を基本としつつ、一部発生する緊急対応にも即応できる連絡体制を整備。月額固定の中で安定運用をお約束します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow-sec">
+  <div class="container">
+    <div class="eyebrow en-head">HOW WE START</div>
+    <h2 class="sec-title">ご契約までの進め方</h2>
+    <div class="timeline">
+      <div class="step">
+        <div class="circle en-head">01</div>
+        <h4>ヒアリング</h4>
+        <p>現状のEC Force / Shopify運用状況、依頼頻度、優先課題をお伺いします。</p>
+      </div>
+      <div class="step">
+        <div class="circle en-head">02</div>
+        <h4>オンライン面談</h4>
+        <p>体制・実績・対応可能範囲をご説明。実務確認（簡易テスト）にも対応します。</p>
+      </div>
+      <div class="step">
+        <div class="circle en-head">03</div>
+        <h4>初月トライアル</h4>
+        <p>既存タスクの一部から着手し、対応スピード・品質・連携方法を確認いただきます。</p>
+      </div>
+      <div class="step">
+        <div class="circle en-head">04</div>
+        <h4>月額固定運用へ</h4>
+        <p>月150,000円〜の固定契約として継続稼働。改善提案も並行して行います。</p>
+      </div>
+    </div>
+
+    <div class="week-box">
+      <h4>平日稼働イメージ（1日あたり約5時間）</h4>
+      <div class="week-grid">
+        <div class="day"><span>MON</span><strong>設定対応</strong></div>
+        <div class="day"><span>TUE</span><strong>修正対応</strong></div>
+        <div class="day"><span>WED</span><strong>URL発行</strong></div>
+        <div class="day"><span>THU</span><strong>LP微修正</strong></div>
+        <div class="day"><span>FRI</span><strong>週次報告</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing" id="closing">
+  <div class="container">
+    <div class="closing-panel">
+      <div class="eyebrow en-head" style="justify-content:center;">NEXT ACTION</div>
+      <h2>まずは、現状の運用状況を<br>お聞かせください。</h2>
+      <p>
+        「専門スキル歓迎」「継続あり」という条件は、Kairosが最も力を発揮できる領域です。
+        長期でECの裏側を任せられるパートナーとして、まずは一度お話しさせてください。
+      </p>
+      <a href="#" class="cta-btn">オンライン面談を申し込む</a>
+      <div class="info-list">
+        <div><b>予算目安：</b>月額 150,000円〜200,000円</div>
+        <div><b>稼働：</b>平日 目安5時間／日</div>
+        <div><b>体制：</b>Kairos チーム対応</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  KAIROS — Web制作・システム開発チーム ／ Proposal for j.20xx
+</footer>
+
+</body>
+</html>
